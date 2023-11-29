@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 
 const db = {};
 db.mongoose = mongoose;
-db.url = ""
+db.url = dbConfig.url
 
 db.tasks = require("./task.model.js")(mongoose);
 

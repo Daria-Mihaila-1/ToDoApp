@@ -1,7 +1,10 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema({
+          
           description: String,
-    }, {timestamps:true}
+          done:Boolean
+    }, 
+    { collection: 'todoappcollection'}
     );
     
     schema.method("toJSON", function() {
@@ -10,6 +13,6 @@ module.exports = mongoose => {
       return object;
     });
   
-    const Task = mongoose.model("task", schema);
-  return Task;
+    const Task = mongoose.model("Task", schema);
+    return Task;
   };
