@@ -16,6 +16,8 @@ exports.findAll = (req, res) => {
       });
   };
 
+  
+  //body: {title:string, description:string}
   exports.save = (req, res) =>{
 
     if (!req.body.title) {
@@ -36,6 +38,22 @@ exports.findAll = (req, res) => {
     })
     .catch (err =>{
       res.status(500).send({message:"Something went wrong when trying to create this task"})
+    })
+  }
+
+  exports.findOne = (req, res) => {
+    const id = req.params.id;
+
+    TaskDB.findById(id)
+    .then(data =>{
+      if(!data){
+        res.status(404).send({message:`No Task with id:${id} found`})
+      }
+      else res.send(data)
+    })
+    .catch(err => {
+      res.status(500)
+      .send({message:`Something went wrong when searching for Task with id:${id}`});
     })
   }
 

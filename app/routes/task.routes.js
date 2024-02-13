@@ -5,10 +5,15 @@ module.exports = app => {
     
     // Retrieve all Tasks
     router.get("/get-all", tasksController.findAll);
+    router.get("/find-by-id/:id", tasksController.findOne);
+
     router.post("/create", tasksController.save);
+    
     router.delete("/delete", tasksController.deleteById);
-    router.put("/update-task/:id", tasksController.update);
     router.delete("/delete-all", tasksController.deleteAll);
+
+    router.put("/update-task/:id", tasksController.update);
+    
     
     app.use('/api/tasks', router);
 }

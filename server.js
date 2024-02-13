@@ -1,3 +1,5 @@
+//Used for the connection to the database and setting up the port
+
 //used for Rest APIs 
 const Express = require("express");
 //for enabling CORS on websites
@@ -6,7 +8,7 @@ const cors = require("cors");
 const app = Express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:4200"
 };
 
 app.use(cors(corsOptions));
@@ -25,7 +27,7 @@ app.use(Express.urlencoded({ extended: true }));
 
 
 // set port, listen for requests
-const PORT = process.env.PORT || 5038;
+const PORT =  5038;
 
 //routing applied to application
 require("./app/routes/task.routes")(app);
